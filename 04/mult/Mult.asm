@@ -10,3 +10,20 @@
 // R0 >= 0, R1 >= 0, and R0*R1 < 32768.
 
 // Put your code here.
+    @R2
+    M=0        // R2を0に初期化
+    @R1
+    D=M        // R1の値をDに代入
+    @END
+    D;JLE      // R1 <= 0のときENDにジャンプして終了
+(LOOP)
+    @R0
+    D=M        // R0の値をDに代入
+    @R2
+    M=D+M      // R0の値をR2に加算
+    @R1
+    M=M-1      // R1からを1を減算
+    D=M
+    @LOOP
+    D;JGT
+(END)
